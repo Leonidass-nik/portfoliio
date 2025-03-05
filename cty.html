@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <style>
+        body { 
+            background-color: black; 
+            color: white; 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            overflow: hidden;
+            position: relative;
+        }
+        .container { 
+            padding: 50px; 
+            max-width: 800px; 
+            margin: auto; 
+            z-index: 10;
+            position: relative;
+        }
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 2rem; color: blue; }
+        p { font-size: 1.2rem; line-height: 1.8; }
+        img { width: 80%; max-width: 600px; border-radius: 10px; margin: 20px 0; }
+        .back-button {
+            margin-top: 30px;
+            background: white;
+            color: black;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            border-radius: 5px;
+        }
+
+        /* Comet animation */
+        .comet {
+            position: absolute;
+            top: -50px;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, white, transparent);
+            border-radius: 50%;
+            animation: fly 6s linear infinite;
+            opacity: 0.8;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 255, 255, 0.4);
+        }
+
+        /* Animating comets to move across the screen */
+        @keyframes fly {
+            0% {
+                transform: translateX(-100px) translateY(0) rotate(0deg);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateX(100vw) translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Multiple comets with different delays, sizes, and random positions */
+        .comet:nth-child(1) {
+            animation-duration: 6s;
+            animation-delay: 0s;
+            width: 20px;
+            height: 20px;
+            left: 10%;
+        }
+        .comet:nth-child(2) {
+            animation-duration: 6s;
+            animation-delay: 2s;
+            width: 25px;
+            height: 25px;
+            left: 30%;
+        }
+        .comet:nth-child(3) {
+            animation-duration: 7s;
+            animation-delay: 4s;
+            width: 20px;
+            height: 20px;
+            left: 50%;
+        }
+        .comet:nth-child(4) {
+            animation-duration: 6s;
+            animation-delay: 6s;
+            width: 30px;
+            height: 30px;
+            left: 70%;
+        }
+        .comet:nth-child(5) {
+            animation-duration: 8s;
+            animation-delay: 8s;
+            width: 20px;
+            height: 20px;
+            left: 85%;
+        }
+    </style>
+</head>
+<body>
+    <div class="comet"></div>
+    <div class="comet"></div>
+    <div class="comet"></div>
+    <div class="comet"></div>
+    <div class="comet"></div>
+    
+    <div class="container">
+        <h1>My Projects</h1>
+
+        <h2>🤖 Neural Network in C++</h2>
+        <p>
+            I recently completed a project where I built a neural network from scratch in C++ to process the MNIST dataset. 
+            Working in C++ was particularly challenging due to the complexity of memory management and the intricacies of optimizing performance 
+            without relying on higher-level libraries. The process involved overcoming technical obstacles and ensuring the network operated efficiently. 
+            In the end, this experience taught me that with perseverance and focus, I can achieve anything I set my mind to...
+        </p>
+        <img src="https://production-media.paperswithcode.com/datasets/MNIST-0000000001-2e09631a_09liOmx.jpg" alt="Neural Network in C++">
+
+        <h2>🔥 Thermodynamics Simulation</h2>
+        <p>
+            Using **C++**, I created a **physics simulation** that models **temperature changes, gas laws, and entropy fluctuations**.
+            This project helped me visualize how energy distributes in a closed system and apply **Boltzmann's equations** computationally.
+        </p>
+        <img src="thermodynamics.jpg" alt="Thermodynamics Simulation">
+
+        <h2>🌌 Theory of Relativity in 3D</h2>
+        <p>
+            I developed a **3D simulation** that visualizes **time dilation and length contraction** based on Einstein's equations.
+            It uses **OpenGL and C++** to create a moving environment where objects stretch and compress dynamically based on speed.
+        </p>
+        <img src="relativity.jpg" alt="Theory of Relativity Simulation">
+
+        <button class="back-button" onclick="location.href='index.html'">Back to Home</button>
+    </div>
+</body>
+</html>
+
