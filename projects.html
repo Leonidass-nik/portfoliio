@@ -121,18 +121,22 @@ void processLayer(const vector<float>& inputArr, const vector<vector<float>>& we
 
     for (int i = 0; i < outputSize; ++i) {
         sums[i] = biasArr[i];
+
         for (int j = 0; j < inputSize; ++j) {
             sums[i] += inputArr[j] * weightsArr[j][i];
         }
     }
 
     if (applySoftmax) {
+
         float maxVal = *max_element(sums.begin(), sums.end());
         float total = 0.0f;
+
         for (float& val : sums) {
             val = exp(val - maxVal);
             total += val;
         }
+        
         for (float& val : sums) {
             val /= total;
         }
@@ -143,10 +147,7 @@ void processLayer(const vector<float>& inputArr, const vector<vector<float>>& we
         }
     }
     resultArr = sums;
-} << std::endl;
-    return 0;
-}
-            </code></pre>
+}   </code></pre>
         </div>
 
         <h2>🔥 Thermodynamics Simulation</h2>
