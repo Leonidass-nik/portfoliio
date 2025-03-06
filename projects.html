@@ -35,6 +35,34 @@
             border-radius: 5px;
         }
 
+        /* Code block styling */
+        .code-container {
+            position: relative;
+            background: #1e1e1e;
+            color: #e02dda;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: left;
+            overflow-x: auto;
+            margin: 20px auto;
+            max-width: 700px;
+        }
+        .copy-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: grey;
+            color: black;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            border-radius: 5px;
+        }
+        .copy-button:hover {
+            background: white;
+        }
+
         /* Comet animation */
         .comet {
             position: absolute;
@@ -61,41 +89,11 @@
         }
 
         /* Multiple comets with different delays, sizes, and random positions */
-        .comet:nth-child(1) {
-            animation-duration: 6s;
-            animation-delay: 0s;
-            width: 20px;
-            height: 20px;
-            left: 10%;
-        }
-        .comet:nth-child(2) {
-            animation-duration: 6s;
-            animation-delay: 2s;
-            width: 25px;
-            height: 25px;
-            left: 30%;
-        }
-        .comet:nth-child(3) {
-            animation-duration: 7s;
-            animation-delay: 4s;
-            width: 20px;
-            height: 20px;
-            left: 50%;
-        }
-        .comet:nth-child(4) {
-            animation-duration: 6s;
-            animation-delay: 6s;
-            width: 30px;
-            height: 30px;
-            left: 70%;
-        }
-        .comet:nth-child(5) {
-            animation-duration: 8s;
-            animation-delay: 8s;
-            width: 20px;
-            height: 20px;
-            left: 85%;
-        }
+        .comet:nth-child(1) { animation-duration: 6s; animation-delay: 0s; width: 20px; height: 20px; left: 10%; }
+        .comet:nth-child(2) { animation-duration: 6s; animation-delay: 2s; width: 25px; height: 25px; left: 30%; }
+        .comet:nth-child(3) { animation-duration: 7s; animation-delay: 4s; width: 20px; height: 20px; left: 50%; }
+        .comet:nth-child(4) { animation-duration: 6s; animation-delay: 6s; width: 30px; height: 30px; left: 70%; }
+        .comet:nth-child(5) { animation-duration: 8s; animation-delay: 8s; width: 20px; height: 20px; left: 85%; }
     </style>
 </head>
 <body>
@@ -110,29 +108,89 @@
 
         <h2>🤖 Neural Network in C++</h2>
         <p>
-            I recently completed a project where I built a neural network from scratch in C++ to process the MNIST dataset. 
-            Working in C++ was particularly challenging due to the complexity of memory management and the intricacies of optimizing performance 
-            without relying on higher-level libraries. The process involved overcoming technical obstacles and ensuring the network operated efficiently. 
-            In the end, this experience taught me that with perseverance and focus, I can achieve anything I set my mind to...
+            I built a neural network from scratch in C++ to process the MNIST dataset.
         </p>
         <img src="https://production-media.paperswithcode.com/datasets/MNIST-0000000001-2e09631a_09liOmx.jpg" alt="Neural Network in C++">
+        <div class="code-container">
+            <button class="copy-button" onclick="copyCode(this)">Copy</button>
+            <pre><code class="cpp">
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+class NeuralNetwork {
+public:
+    NeuralNetwork(int input, int hidden, int output) {
+        // Initialize layers
+    }
+    void train(std::vector&lt;double&gt; data) {
+        // Training logic
+    }
+};
+int main() {
+    NeuralNetwork nn(784, 128, 10);
+    std::cout << "Neural Network Created!" << std::endl;
+    return 0;
+}
+            </code></pre>
+        </div>
 
         <h2>🔥 Thermodynamics Simulation</h2>
         <p>
-            Using **C++**, I created a **physics simulation** that models **temperature changes, gas laws, and entropy fluctuations**.
-            This project helped me visualize how energy distributes in a closed system and apply **Boltzmann's equations** computationally.
+            Using C++, I created a physics simulation that models temperature changes.
         </p>
         <img src="thermodynamics.jpg" alt="Thermodynamics Simulation">
+        <div class="code-container">
+            <button class="copy-button" onclick="copyCode(this)">Copy</button>
+            <pre><code class="cpp">
+#include &lt;iostream&gt;
+
+double calculateTemperature(double energy, double particles) {
+    return energy / particles;
+}
+
+int main() {
+    double temp = calculateTemperature(1000, 50);
+    std::cout << "Temperature: " << temp << "K" << std::endl;
+    return 0;
+}
+            </code></pre>
+        </div>
 
         <h2>🌌 Theory of Relativity in 3D</h2>
         <p>
-            I developed a **3D simulation** that visualizes **time dilation and length contraction** based on Einstein's equations.
-            It uses **OpenGL and C++** to create a moving environment where objects stretch and compress dynamically based on speed.
+            A 3D simulation visualizing time dilation and length contraction.
         </p>
         <img src="relativity.jpg" alt="Theory of Relativity Simulation">
+        <div class="code-container">
+            <button class="copy-button" onclick="copyCode(this)">Copy</button>
+            <pre><code class="cpp">
+#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+
+double lorentzFactor(double velocity, double c) {
+    return 1 / sqrt(1 - (velocity * velocity) / (c * c));
+}
+
+int main() {
+    double gamma = lorentzFactor(0.9, 1.0);
+    std::cout << "Lorentz Factor: " << gamma << std::endl;
+    return 0;
+}
+            </code></pre>
+        </div>
 
         <button class="back-button" onclick="location.href='index.html'">Back to Home</button>
     </div>
+
+    <script>
+        function copyCode(button) {
+            let codeBlock = button.nextElementSibling.textContent;
+            navigator.clipboard.writeText(codeBlock).then(() => {
+                button.textContent = "Copied!";
+                setTimeout(() => { button.textContent = "Copy"; }, 1500);
+            });
+        }
+    </script>
 </body>
 </html>
 
