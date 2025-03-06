@@ -114,21 +114,36 @@
         <div class="code-container">
             <button class="copy-button" onclick="copyCode(this)">Copy</button>
             <pre><code class="cpp">
-#include &lt;iostream&gt;
-#include &lt;vector&gt;
+void processLayer(const vector<float>& inputArr, const vector<vector<float>>& weightsArr,
+    const vector<float>& biasArr, vector<float>& resultArr,
+    int inputSize, int outputSize, bool applySoftmax) {
+    vector<float> sums(outputSize, 0.0f);
 
-class NeuralNetwork {
-public:
-    NeuralNetwork(int input, int hidden, int output) {
-        // Initialize layers
+    for (int i = 0; i < outputSize; ++i) {
+        sums[i] = biasArr[i];
+        for (int j = 0; j < inputSize; ++j) {
+            sums[i] += inputArr[j] * weightsArr[j][i];
+        }
     }
-    void train(std::vector&lt;double&gt; data) {
-        // Training logic
+
+    if (applySoftmax) {
+        float maxVal = *max_element(sums.begin(), sums.end());
+        float total = 0.0f;
+        for (float& val : sums) {
+            val = exp(val - maxVal);
+            total += val;
+        }
+        for (float& val : sums) {
+            val /= total;
+        }
     }
-};
-int main() {
-    NeuralNetwork nn(784, 128, 10);
-    std::cout << "Neural Network Created!" << std::endl;
+    else {
+        for (float& val : sums) {
+            val = ReLU(val);
+        }
+    }
+    resultArr = sums;
+} << std::endl;
     return 0;
 }
             </code></pre>
